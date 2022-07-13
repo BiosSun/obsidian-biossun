@@ -1,6 +1,9 @@
+import { set } from 'lodash'
+
 import {
     App,
     Editor,
+    loadMathJax,
     MarkdownView,
     Modal,
     Notice,
@@ -23,6 +26,16 @@ export default class MyPlugin extends Plugin {
     // settings: MyPluginSettings
 
     async onload() {
+        await loadMathJax()
+
+        if (!MathJax) {
+            console.warn('MathJax was not defined despite loading it.')
+            return
+        }
+
+        set(window, 'MathJax.startup.output.options.displayAlign', 'left')
+        console.debug('change MathJax displayAlign to left')
+
         // await this.loadSettings()
 
         // // This creates an icon in the left ribbon.

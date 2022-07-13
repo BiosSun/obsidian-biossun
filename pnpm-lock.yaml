@@ -1,16 +1,22 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/lodash': ^4.14.182
   '@types/node': ^16.11.6
   '@typescript-eslint/eslint-plugin': 5.29.0
   '@typescript-eslint/parser': 5.29.0
   builtin-modules: 3.3.0
   esbuild: 0.14.47
+  lodash: ^4.17.21
   obsidian: latest
   tslib: 2.4.0
   typescript: 4.7.4
 
+dependencies:
+  lodash: 4.17.21
+
 devDependencies:
+  '@types/lodash': 4.14.182
   '@types/node': 16.11.43
   '@typescript-eslint/eslint-plugin': 5.29.0_9c48426b5affe47de21e7b6042aecb62
   '@typescript-eslint/parser': 5.29.0_typescript@4.7.4
@@ -55,6 +61,10 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/lodash/4.14.182:
+    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/node/16.11.43:
@@ -525,6 +535,10 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
     dev: true
+
+  /lodash/4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: false
 
   /lru-cache/6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}

@@ -36,6 +36,9 @@ export default class MyPlugin extends Plugin {
         set(window, 'MathJax.startup.output.options.displayAlign', 'left')
         console.debug('change MathJax displayAlign to left')
 
+        set(window, 'MathJax.startup.output.options.scale', 1.2)
+        console.debug('change MathJax scale to 1.2')
+
         // await this.loadSettings()
 
         // // This creates an icon in the left ribbon.

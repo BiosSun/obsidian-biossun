@@ -11,3 +11,7 @@ em {
 .markdown-source-view.mod-cm6 .HyperMD-codeblock-begin {
     padding-top: 8px;
 }
+
+.cm-formatting.cm-formatting-task.cm-property {
+    font-size: unset;
+}

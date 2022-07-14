@@ -18,7 +18,9 @@
         "@typescript-eslint/parser": "5.29.0",
         "builtin-modules": "3.3.0",
         "esbuild": "0.14.47",
+        "fs-extra": "^10.1.0",
         "obsidian": "latest",
+        "open": "^8.4.0",
         "tslib": "2.4.0",
         "typescript": "4.7.4"
     },

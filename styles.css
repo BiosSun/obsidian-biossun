@@ -3,6 +3,11 @@
     --text-italic: var(--tx2);
 }
 
-.cm-s-obsidian .cm-em, em {
+.cm-s-obsidian .cm-em,
+em {
     font-style: normal;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-codeblock-begin {
+    padding-top: 8px;
 }

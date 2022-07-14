@@ -1,4 +1,4 @@
-import { set } from 'lodash'
+import { set } from 'lodash';
 
 import {
     App,
@@ -10,7 +10,7 @@ import {
     Plugin,
     PluginSettingTab,
     Setting,
-} from 'obsidian'
+} from 'obsidian';
 
 // // Remember to rename these classes and interfaces!
 
@@ -26,18 +26,10 @@ export default class MyPlugin extends Plugin {
     // settings: MyPluginSettings
 
     async onload() {
-        await loadMathJax()
-
-        if (!MathJax) {
-            console.warn('MathJax was not defined despite loading it.')
-            return
-        }
-
-        set(window, 'MathJax.startup.output.options.displayAlign', 'left')
-        console.debug('change MathJax displayAlign to left')
-
-        set(window, 'MathJax.startup.output.options.scale', 1.2)
-        console.debug('change MathJax scale to 1.2')
+        await Promise.all([
+            this.configMathJax(),
+            this.enhanceLine(),
+        ]);
 
         // await this.loadSettings()
 
@@ -104,6 +96,32 @@ export default class MyPlugin extends Plugin {
     }
 
     onunload() {}
+
+    private async configMathJax() {
+        await loadMathJax();
+
+        if (!MathJax) {
+            console.warn('MathJax was not defined despite loading it.');
+            return;
+        }
+
+        set(window, 'MathJax.startup.output.options.displayAlign', 'left');
+        console.debug('change MathJax displayAlign to left');
+
+        set(window, 'MathJax.startup.output.options.scale', 1.2);
+        console.debug('change MathJax scale to 1.2');
+    }
+
+    private async enhanceLine() {
+        // this.registerMarkdownPostProcessor((el, context) => {
+        //     console.info(el, context)
+        //     const hr = el.querySelectorAll('hr')
+        //     hr.forEach(hr => {
+        //         const info = context.getSectionInfo(hr)
+        //         console.info('----', info)
+        //     })
+        // });
+    }
 
     // async loadSettings() {
     //     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData())

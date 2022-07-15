@@ -26,18 +26,9 @@ export default class MyPlugin extends Plugin {
     // settings: MyPluginSettings
 
     async onload() {
-        await loadMathJax()
-
-        if (!MathJax) {
-            console.warn('MathJax was not defined despite loading it.')
-            return
-        }
-
-        set(window, 'MathJax.startup.output.options.displayAlign', 'left')
-        console.debug('change MathJax displayAlign to left')
-
-        set(window, 'MathJax.startup.output.options.scale', 1.2)
-        console.debug('change MathJax scale to 1.2')
+        await Promise.all([
+            this.configMathJax(),
+        ]);
 
         // await this.loadSettings()
 
@@ -112,6 +103,21 @@ export default class MyPlugin extends Plugin {
     // async saveSettings() {
     //     await this.saveData(this.settings)
     // }
+
+    private async configMathJax() {
+        await loadMathJax();
+
+        if (!MathJax) {
+            console.warn('MathJax was not defined despite loading it.');
+            return;
+        }
+
+        set(window, 'MathJax.startup.output.options.displayAlign', 'left');
+        console.debug('change MathJax displayAlign to left');
+
+        set(window, 'MathJax.startup.output.options.scale', 1.2);
+        console.debug('change MathJax scale to 1.2');
+    }
 }
 
 // class SampleModal extends Modal {

@@ -28,7 +28,8 @@ export default class MyPlugin extends Plugin {
     async onload() {
         await Promise.all([
             this.configMathJax(),
-        ]);
+            this.addEditorCommands()
+        ])
 
         // await this.loadSettings()
 
@@ -105,18 +106,33 @@ export default class MyPlugin extends Plugin {
     // }
 
     private async configMathJax() {
-        await loadMathJax();
+        await loadMathJax()
 
         if (!MathJax) {
-            console.warn('MathJax was not defined despite loading it.');
-            return;
+            console.warn('MathJax was not defined despite loading it.')
+            return
         }
 
-        set(window, 'MathJax.startup.output.options.displayAlign', 'left');
-        console.debug('change MathJax displayAlign to left');
+        set(window, 'MathJax.startup.output.options.displayAlign', 'left')
+        console.debug('change MathJax displayAlign to left')
 
-        set(window, 'MathJax.startup.output.options.scale', 1.2);
-        console.debug('change MathJax scale to 1.2');
+        set(window, 'MathJax.startup.output.options.scale', 1.2)
+        console.debug('change MathJax scale to 1.2')
+    }
+
+    private async addEditorCommands() {
+        this.addCommand({
+            id: 'delete-char-forward',
+            name: 'Delete the selection or the character after the cursor',
+            editorCallback: (editor: Editor) => {
+                const cursor = editor.getCursor()
+                const selection = editor.getSelection()
+                if (!selection) {
+                    editor.setSelection(cursor, { ...cursor, ch: cursor.ch + 1 })
+                }
+                editor.replaceSelection('')
+            },
+        })
     }
 }
 
